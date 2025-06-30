@@ -9,6 +9,7 @@ A FiveM resource for F1 Racing leagues using the Progen PR4 (`formula`) car in G
 - QBox Framework
 - ox_lib
 - ox_fuel
+- ox_target
 
 ## Installation
 1. Place the `dude_formularacing` folder in your server's resources directory
@@ -16,4 +17,7 @@ A FiveM resource for F1 Racing leagues using the Progen PR4 (`formula`) car in G
 3. Adjust settings in `shared/config.lua` as needed
 
 ## Planned Features
-- [Future features will be listed here]
+- No Planned Features / No Support.
+
+I am retired and am just releasing these into the wild.
+Hope you enjoy!
