@@ -5,6 +5,8 @@ A FiveM resource for F1 Racing leagues using the Progen PR4 (`formula`) car in G
 ## Features
 - Boost fuel consumption: Using the car's boost (E key) consumes additional fuel (configurable). Limited Access to button (Every 30 seconds), named it KERS (DRS) on the UI.
 - Tire Degredation.
+- Pitstop slowdown and repair enforcement
+- Emergency "crash respawn to pits" mechanic, inspired by iRacing
 - Fully Multiplayer Synchronized Pitstop - multiple people can change tires at the same time.
 
 ## Dependencies
