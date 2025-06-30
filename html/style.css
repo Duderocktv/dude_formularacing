@@ -1,0 +1,157 @@
+/* html/style.css - Refactored Version */
+
+/* Basic reset and body setup */
+body, html {
+    background-color: transparent !important; /* Ensure transparency */
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Prevent scrollbars on the NUI frame */
+    font-family: Arial, Helvetica, sans-serif; /* Basic fallback font */
+    color: white;
+    user-select: none; /* Disable text selection */
+}
+
+/* Main container for KERS and Tires */
+#formula-ui-container {
+    position: absolute;
+    /* --- POSITIONING --- */
+    bottom: 3vh;            /* Adjust vertical position from bottom */
+    right: 1vw;             /* Adjust horizontal position from right */
+    /* --- End Positioning --- */
+
+    width: auto;            /* Allow width to be determined by content */
+    height: auto;           /* Allow height to be determined by content */
+
+    display: none;          /* --- DEFAULT: HIDDEN --- */
+    /* Uses flexbox for vertical stacking */
+    flex-direction: column;
+    /* Aligns items to the right edge if container was wider */
+    align-items: flex-end;
+    gap: 8px;               /* Space between KERS and Tires */
+
+    /* Ensure it's above most things, adjust if conflicts occur */
+    z-index: 100;
+}
+
+/* --- Visibility Control Classes (Toggled by JS) --- */
+#formula-ui-container.visible-flex {
+    display: flex !important; /* Use !important to fight potential overrides */
+}
+
+.ui-element.visible {
+    display: block !important; /* Use !important */
+}
+/* --- End Visibility Classes --- */
+
+
+/* Styling for individual UI sections (KERS/Tires) */
+.ui-element {
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out; /* Optional fade effect */
+    /* Individual elements start hidden via CSS */
+    display: none;
+     /* Ensure children are above parent background if needed */
+    z-index: 101;
+}
+
+/* KERS Styles */
+#kers-container {
+    width: 150px;           /* Adjust width as desired */
+    height: 20px;           /* Adjust height as desired */
+    position: relative;     /* Needed for absolute positioning of fill/text */
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.65); /* Background color */
+    border-radius: 3px;     /* Slightly rounded corners */
+    overflow: hidden;       /* Hide overflowing fill bar */
+}
+
+.kers-bar { /* Base style for the fill bar */
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    /* Width is controlled dynamically by JS */
+    transition: width 0.1s linear; /* Smooth width transition for timer */
+}
+
+#kers-fill {
+    background-color: grey; /* Default/Initial color */
+    width: 100%;            /* Default/Initial width */
+    z-index: 1;             /* Render fill below text */
+    transition: background-color 0.3s ease; /* Smooth color changes */
+}
+
+#kers-text {
+    position: relative;     /* Position normally on top */
+    z-index: 2;             /* Ensure text is above fill bar */
+    font-size: 12px;        /* Adjust font size */
+    line-height: 20px;      /* Match container height for vertical centering */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.9); /* Text shadow for readability */
+    font-weight: bold;
+    color: white;
+    white-space: nowrap;    /* Prevent text wrapping */
+}
+
+/* Tire Wear Styles */
+#tire-container {
+    background-color: rgba(0, 0, 0, 0.65); /* Background color */
+    border-radius: 5px;
+    padding: 5px 10px 10px 10px; /* Top, LR, Bottom padding */
+    width: 140px;           /* Adjust width as desired */
+    text-align: center;
+}
+
+#tire-title {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.9);
+    text-transform: uppercase;
+    color: white;
+}
+
+#tire-layout {
+    display: grid;          /* Use grid for 2x2 layout */
+    grid-template-columns: 1fr 1fr; /* Two equal columns */
+    grid-template-rows: 1fr 1fr;    /* Two equal rows */
+    gap: 6px;               /* Adjust gap between tire boxes */
+    width: 70px;            /* Adjust grid width */
+    height: 70px;           /* Adjust grid height */
+    margin: 0 auto;         /* Center the grid horizontally */
+}
+
+.tire-box {
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Subtle border */
+    border-radius: 4px;
+    background-color: grey; /* Default/Initial color */
+    /* Use flexbox to center percentage text inside */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    /* Smooth transitions for color/border changes */
+    transition: background-color 0.3s ease, border-style 0.3s ease;
+    overflow: hidden;
+}
+
+ .tire-perc {
+    font-size: 11px;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.9);
+    color: white;
+    white-space: nowrap;
+ }
+
+/* Tire Wear Color Classes (Applied by JS) */
+.tire-wear-good { background-color: rgba(0, 200, 0, 0.8); }
+.tire-wear-medium { background-color: rgba(255, 255, 0, 0.8); }
+.tire-wear-low { background-color: rgba(255, 165, 0, 0.8); }
+.tire-wear-critical { background-color: rgba(255, 0, 0, 0.8); }
+.tire-wear-burst { background-color: rgba(100, 0, 0, 0.8); border-style: dashed; border-color: red; }
+
+
+/* Grid Positioning (IDs match game indices used in HTML) */
+#tire-0 { grid-column: 1 / 2; grid-row: 1 / 2; } /* Front Left */
+#tire-1 { grid-column: 2 / 3; grid-row: 1 / 2; } /* Front Right */
+#tire-4 { grid-column: 1 / 2; grid-row: 2 / 3; } /* Rear Left */
+#tire-5 { grid-column: 2 / 3; grid-row: 2 / 3; } /* Rear Right */

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Formula Racing UI</title>
+    <!-- Link to the stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Main container for all formula UI elements -->
+    <!-- Starts hidden via CSS, visibility controlled by JS -->
+    <div id="formula-ui-container">
+
+        <!-- KERS Display Element -->
+        <div id="kers-container" class="ui-element">
+            <!-- The background color is set on #kers-container itself -->
+            <!-- This div represents the fill level/status color -->
+            <div id="kers-fill" class="kers-bar"></div>
+            <!-- This div holds the text overlay -->
+            <div id="kers-text">KERS: N/A</div>
+        </div>
+
+        <!-- Tire Wear Display Element -->
+        <div id="tire-container" class="ui-element">
+            <!-- Title for the tire section -->
+            <div id="tire-title">TIRE WEAR</div>
+            <!-- Grid layout for the individual tire boxes -->
+            <div id="tire-layout">
+                <!-- Front Left Tire -->
+                <div class="tire-box" id="tire-0">
+                    <span class="tire-perc">N/A</span>
+                </div>
+                <!-- Front Right Tire -->
+                <div class="tire-box" id="tire-1">
+                    <span class="tire-perc">N/A</span>
+                </div>
+                <!-- Rear Left Tire (Corresponds to game index 4) -->
+                <div class="tire-box" id="tire-4">
+                    <span class="tire-perc">N/A</span>
+                </div>
+                <!-- Rear Right Tire (Corresponds to game index 5) -->
+                <div class="tire-box" id="tire-5">
+                    <span class="tire-perc">N/A</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Link to the JavaScript file -->
+    <script src="script.js"></script>
+</body>
+</html>
